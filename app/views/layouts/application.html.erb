@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>徒然日記</title>
+    <%= csrf_meta_tags %>
+    
+<meta name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<body>
+<header>
+  <ul>
+    <li><%=link_to "一覧",blogs_path %></li>
+    <li><%=link_to "つぶやく",new_blog_path %></li>
+    <li><%=link_to "ホーム", root_path %></li>
+  </ul>
+</header>
+   <div class ="main">
+    <%= yield %>
+   </div>
+  
+<footer>
+  <p>KAORI SASAKI</p>
+  <p>© 2015-2016 Copyright DIVE INTO CODE.</p>
+</footer>
+</body>
+</html>
