@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
-    before_action :set_blog, only:[:show,:edit,:update,:destroy]
+  before_action :set_blog, only: [:edit,:update,:destroy,:show]
+  before_action :login_check, only: [:new,:edit, :show]
+  
     def index
         @blogs = Blog.all
     end
@@ -55,4 +57,11 @@ class BlogsController < ApplicationController
     def set_blog
        @blog = Blog.find(params[:id])
     end
+    
+     def login_check
+    unless current_user
+      redirect_to new_session_path
+    end
+  end
 end
+
