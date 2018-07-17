@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,6 +24,7 @@
 
     <% if logged_in? %>
       <!-- <%= link_to "Profile", user_path(current_user.id) %> -->
+      <%= link_to "お気に入り", user_path(current_user.id) %>
       <%= link_to'ブログ一覧画面を確認する',blogs_path %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
     <% else %>

@@ -5,4 +5,16 @@
     <p>内容: <%= @blog.content %></p>
     <%= link_to '戻る', :back ,class: 'btn btn-info' %>
   </div>
+  
+  <div class="to_center">
+<% unless @blog.user == current_user %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+   <div class="blog-links">
+     <%= link_to '一覧へ戻る', blogs_path, class: 'btn btn-default' %>
+   </div>
 </div>

@@ -17,7 +17,7 @@ class BlogsController < ApplicationController
     
     def create
         @blog = Blog.new(blog_params)
-        
+        @blog.user_id = current_user.id
       if @blog.save
         redirect_to blogs_path, notice: 'ブログが作成されました'
       else
@@ -26,6 +26,7 @@ class BlogsController < ApplicationController
     end
     
     def show
+       @favorite = current_user.favorites.find_by(blog_id: @blog.id)
     end
     
     def edit
@@ -46,22 +47,27 @@ class BlogsController < ApplicationController
     
     def confirm
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     render :new if @blog.invalid?  
     end
     
-    private
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :password,
+                                 :password_confirmation)
+  end
     def blog_params
-        params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content)
     end
-    
+
+    # idをキーとして値を取得するメソッド
     def set_blog
-       @blog = Blog.find(params[:id])
+      @blog = Blog.find(params[:id])
     end
-    
-     def login_check
+
+  def login_check
     unless current_user
       redirect_to new_session_path
     end
   end
 end
-
