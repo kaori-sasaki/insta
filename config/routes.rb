@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   get 'sessions/new'
 
   get '/', to:'tops#index'
@@ -11,4 +12,7 @@ Rails.application.routes.draw do
   resources :users
   resources :favorites, only: [:create, :destroy]
   get '/sessions',to:'sessions#new'
+if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener'
+end
 end
