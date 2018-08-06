@@ -1,6 +1,7 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+<p>イメージ: <%= image_tag @user.image %></p>
 
 <ul>
 <% @favorites_blog.each do |blog| %>

@@ -23,7 +23,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
     if @blog.save
-       ContactMailer.contact_mail(@blog).deliver
+      ContactMailer.contact_mail(@blog).deliver
       redirect_to blogs_path
       else
       render 'new'
@@ -53,11 +53,11 @@ class BlogsController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password,
+    params.require(:user).permit(:name, :email, :password, :image, :image_cache,
                                  :password_confirmation)
   end
     def blog_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :image, :image_cache)
     end
 
     # idをキーとして値を取得するメソッド
@@ -71,7 +71,7 @@ class BlogsController < ApplicationController
     end
 
   def contact_params
-      params.require(:contact).permit(:name, :email, :content)
-    end
+      params.require(:contact).permit(:name, :email, :content, :image, :image_cache)
+  end
   end
 end

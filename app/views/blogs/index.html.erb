@@ -7,7 +7,7 @@
     <ul class = 'row'>
         <li class = "col-sm-6 col-md-6">タイトル:<%= blog.title %></li>
         <li class = "col-sm-6 col-md-6">内容:<%= blog.content %></li>
-    </ul>
+     </ul>
   
         <%= link_to 'ブログを確認する', blog_path(blog.id), class: 'btn btn-info' %>
         <% unless current_user.nil? %>
