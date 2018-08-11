@@ -29,8 +29,7 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         ContactMailer.contact_mail(@contact).deliver
-        flash[:success] = 'お問い合わせを送信しました！'
-        format.html { redirect_to @contact}
+        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -44,8 +43,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        flash[:success] = 'お問い合わせ内容を変更しました'
-        format.html { redirect_to @contact }
+        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :edit }
@@ -59,8 +57,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      flash[:success] = 'お問い合わせ内容を削除しました'
-      format.html { redirect_to contacts_url }
+      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
