@@ -1,0 +1,21 @@
+<%= form_with(model: @picture, local: true ,url: confirm_pictures_path ) do |form| %>
+<p><%= notice %></p>
+
+        <% @picture.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+
+
+  <div class="picture_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  
+  <div class="picture_title">
+    <%= form.label :image %>
+    <%= form.file_field :image, id: :picture_image %>
+  </div>
+  
+<button type="submit" class="btn btn-default">送 信</button>
+<% end %>

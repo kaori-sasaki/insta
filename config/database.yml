@@ -6,14 +6,14 @@ default: &default
   
 development:
   <<: *default
-  database: sample_development
+  database: insta_development
 
 test:
   <<: *default
-  database: sample_test
+  database: insta_test
 
 production:
   <<: *default
-  database: sample_production
-  username: sample
-  password: <%= ENV['SAMPLE_DATABASE_PASSWORD'] %>
+  database: insta_production
+  username: insta
+  password: <%= ENV['insta_DATABASE_PASSWORD'] %>

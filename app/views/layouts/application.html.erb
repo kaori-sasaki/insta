@@ -1,20 +1,21 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>徒然日記</title>
+ <head>
+    <title>instaclone</title>
     <%= csrf_meta_tags %>
-    
+
 <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
 <body>
 <header>
   <ul>
     <li><a href="/">ホーム</a></li>
-    <li><%=link_to "一覧",blogs_path %></li>
-    <li><%=link_to "つぶやく",new_blog_path %></li>
+    <li><%=link_to "一覧",pictures_path %></li>
+    <li><%=link_to "つぶやく",new_picture_path %></li>
   </ul>
 </header>
 
@@ -25,17 +26,17 @@
     <% if logged_in? %>
       <!-- <%= link_to "Profile", user_path(current_user.id) %> -->
       <%= link_to "お気に入り", user_path(current_user.id) %>
-      <%= link_to'ブログ一覧画面を確認する',blogs_path %>
+      <%= link_to'ブログ一覧画面を確認する',pictures_path %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
     <% end %>
-    
+
    <div class ="main">
     <%= yield %>
    </div>
-  
+
 <footer>
   <p>KAORI SASAKI</p>
   <p>© 2015-2016 Copyright DIVE INTO CODE.</p>

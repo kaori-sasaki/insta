@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get '/', to:'tops#index'
-  resources :blogs do
+  resources :pictures do
     collection do
       post :confirm
    end

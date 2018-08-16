@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FeedTest < ActiveSupport::TestCase
+class PicturesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

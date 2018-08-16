@@ -1,0 +1,23 @@
+<div class="container">
+
+<!--<p><%= notice %></p>-->
+    
+   <div class="contents"> 
+   <% @pictures.each do |picture| %>
+    <ul class = 'row'>
+        <li class = "col-sm-6 col-md-6">タイトル:<%= picture.title %></li>
+        <% user = User.find_by(id: picture.user_id) %>
+        <li class = "col-sm-6 col-md-6">投稿者:<%=  user.name %></li>
+     </ul>
+  
+        <%= link_to '確認', picture_path(picture.id), class: 'btn btn-info' %>
+        <% unless current_user.nil? %>
+          <% if current_user.id == picture.user_id %>
+        <%= link_to '編集', edit_picture_path(picture.id), class: 'btn btn-info' %>
+        <%= link_to '削除', picture_path(picture.id), method: :delete ,data: { confirm: '本当に削除してよろしいですか'}, class: 'btn btn-info' %>
+          <% end %>
+        <% end %>
+<% end %>
+</div>
+
+</div>

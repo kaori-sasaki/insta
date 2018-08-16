@@ -1,0 +1,21 @@
+<h3>以下の内容で、送信する。</h3>
+<div class="container">
+   <div class="picture-details">
+
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+
+  <%= form.hidden_field :title %>
+ <div class="picture_title">
+  <p>タイトル:<%= @picture.title %></p>
+  <p>画像: <%= image_tag(@picture.image) %></p>
+    <%= form.hidden_field :image_cache %>
+  <button type="submit" class="btn btn-default">登録する</button>
+<% end %>
+
+<%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :title %>
+  <button type="submit" class="btn btn-default">戻る</button>
+<% end %>
+   </div>
+   </div>
+</div>

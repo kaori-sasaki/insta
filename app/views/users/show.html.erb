@@ -4,7 +4,7 @@
 <p>イメージ: <%= image_tag @user.image %></p>
 
 <ul>
-<% @favorites_blog.each do |blog| %>
-<li>お気に入り：<%= link_to "#{blog.content}", blog_path(blog.id) %></li>
+<% @favorites_picture.each do |picture| %>
+<li>お気に入り：<%= link_to "#{picture.title}", picture_path(picture.id) %></li>
 <% end %>
 </ul>
