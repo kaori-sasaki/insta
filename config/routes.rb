@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  root 'tops#index'
   resources :feeds
   resources :contacts
   get 'sessions/new'
 
-  get '/', to:'tops#index'
+
   resources :pictures do
     collection do
       post :confirm
